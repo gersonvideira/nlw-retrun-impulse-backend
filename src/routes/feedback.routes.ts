@@ -1,5 +1,6 @@
 import { PrismaFeedbacksRepository } from '@repositories/prisma/prisma-feedbaks-repository'
 import { Router } from 'express'
+import { NodemailerMailAdapter } from 'src/adapters/nodemailer/nodemailer-mail-adapter'
 import { SubmitFeedbackUseCase } from 'src/use-cases/submit-feedback-use-case'
 
 class FeedbackRoutes {
@@ -8,7 +9,12 @@ class FeedbackRoutes {
     feedbackRoutes.post('/feedback', async (req, res) => {
       const { type, comment, screenshot } = req.body
       const prismaFeedbacksRepository = new PrismaFeedbacksRepository()
-      const submitFeedbackUseCase = new SubmitFeedbackUseCase(prismaFeedbacksRepository)
+      const nodemailerMailAdapter = new NodemailerMailAdapter
+
+      const submitFeedbackUseCase = new SubmitFeedbackUseCase(
+        prismaFeedbacksRepository,
+        nodemailerMailAdapter
+      )
 
       const feedback = await submitFeedbackUseCase.execute({
         type,
