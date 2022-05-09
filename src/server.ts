@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { json, urlencoded } from 'body-parser'
 import { Server } from 'http';
+import router from '@routes/index'
 
 
 
@@ -23,7 +24,7 @@ export class App {
   }
 
   private setupRoutes(): void {
-    // this.app.use(router)
+    this.app.use(router)
   } 
 
   private setupMiddleware(): void {
