@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import FeedbackRoutes from './feedback.routes';
 
 
 
@@ -8,6 +9,9 @@ class Routes {
       return res.send('Hello World')
     })
 
+    indexRoute.use(FeedbackRoutes)
+
+    
     return indexRoute
   }
 }
