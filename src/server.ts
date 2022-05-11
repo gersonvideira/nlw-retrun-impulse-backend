@@ -9,9 +9,9 @@ import router from '@routes/index'
 export class App {
   private server?: Server
 
-  constructor(private port=3001, public app = express()){}
+  constructor(private port = 3001, public app = express()) { }
 
-  public init(): void{
+  public init(): void {
     this.setupExpress()
     this.setupRoutes()
     this.setupMiddleware()
@@ -20,18 +20,18 @@ export class App {
   private setupExpress() {
     this.app.use(cors())
     this.app.use(json())
-    this.app.use(urlencoded({extended:true}))
+    this.app.use(urlencoded({ extended: true }))
   }
 
   private setupRoutes(): void {
     this.app.use(router)
-  } 
+  }
 
   private setupMiddleware(): void {
 
   }
 
-  public start():void {
+  public start(): void {
     this.server = this.app.listen(this.port, () => {
       console.log(`Server running on port ${this.port} 🔥`)
     })

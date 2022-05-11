@@ -9,6 +9,7 @@
   "author": "gersonvideira <23234311+gersonvideira@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
+    "@swc/core": "^1.2.181",
     "@swc/jest": "^0.2.21",
     "@types/body-parser": "^1.19.2",
     "@types/cors": "^2.8.12",
