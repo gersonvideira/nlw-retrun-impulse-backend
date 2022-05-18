@@ -32,7 +32,7 @@ export class App {
   }
 
   public start(): void {
-    this.server = this.app.listen(this.port, () => {
+    this.server = this.app.listen(process.env.PORT ||this.port, () => {
       console.log(`Server running on port ${this.port} 🔥`)
     })
   }
